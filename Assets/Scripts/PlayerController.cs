@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5.0f;
-    private Rigidbody rb;
-    private int pickupCount;
-    private Timer timer;
-    private bool gameOver = false;
+    public float speed = 5.0f; //Movement of player
+    private Rigidbody rb; //Reference to rigidbody of player
+    private int pickupCount; //Number of pickups in game
+    private Timer timer; //Reference to timer script
+    private bool gameOver = false; //Indication to see if the game is over
 
     [Header("UI")]
-    public GameObject inGamePanel;
-    public GameObject winPanel;
-    public TMP_Text scoreText;
-    public TMP_Text timerText;
-    public TMP_Text winTimeText;
+    public GameObject inGamePanel; //Panel for in-game screen
+    public GameObject winPanel; //Panel for win screen
+    public TMP_Text scoreText; //Text for pickup score
+    public TMP_Text timerText; //Text for timer
+    public TMP_Text winTimeText; //Text for win timer
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
+    //Quit the game
     public void QuitGame()
     {
         Application.Quit();
