@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 76d4c42d63cfd9a4488679db98608213
+  - enabled: 1
+    path: Assets/Scenes/TronGame.unity
+    guid: d215eb555ed087541b6c558482b91b43
+  - enabled: 1
+    path: Assets/Scenes/NormalGame.unity
+    guid: af9001438bb19234a833f89b55ffe538
   m_configObjects: {}
