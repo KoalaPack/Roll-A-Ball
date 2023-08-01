@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text scoreText; //Text for pickup score
     public TMP_Text timerText; //Text for timer
     public TMP_Text winTimeText; //Text for win timer
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (gameOver == true)
         {
             return;
@@ -48,10 +51,12 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rb.AddForce(movement * speed);
     }
+
     private void Update()
     {
         timerText.text = "Time: " + timer.GetTime().ToString("F2");
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
