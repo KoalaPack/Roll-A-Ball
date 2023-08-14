@@ -58,6 +58,7 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+
     //Loads Normal Game Scene
     public void ToNormalGame()
     {

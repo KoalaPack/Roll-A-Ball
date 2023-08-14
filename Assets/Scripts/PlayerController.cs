@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        timerText.text = "Time: " + timer.GetTime().ToString("F2");
+        //timerText.text = "Time: " + timer.GetTime().ToString("F2");
     }
 
 
@@ -95,17 +96,5 @@ public class PlayerController : MonoBehaviour
         //Set the velocity of the rigidbody to zero
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-    }
-
-    //Temporary - Remove when doing modules in A2
-    public void RestartGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-    }
-
-    //Quit the game
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
