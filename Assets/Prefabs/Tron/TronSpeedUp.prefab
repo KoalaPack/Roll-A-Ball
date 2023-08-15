@@ -4920,9 +4920,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5468891960275426546}
   - component: {fileID: 5468891960275426549}
+  - component: {fileID: 7713384945519932155}
   m_Layer: 0
   m_Name: TronSpeedUp
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4958,3 +4959,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7713384945519932155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468891960275426547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fccc68e1c65602429c06e07f6506c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPowerup: 0
+  powerupDuration: 3
