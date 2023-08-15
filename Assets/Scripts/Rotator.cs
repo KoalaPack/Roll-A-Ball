@@ -8,6 +8,6 @@ public class Rotator : MonoBehaviour
     void Update()
     {
         // Rotate the object based on the axis (Vector3) and speed 
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime * speed);
+        transform.Rotate(new Vector3(3, 30, 0) * Time.deltaTime * speed);
     }
 }

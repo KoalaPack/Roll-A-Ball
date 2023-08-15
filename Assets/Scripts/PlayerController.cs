@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f; //Movement of player
+    
+    [HideInInspector]
+    public float baseSpeed;
+
     private Rigidbody rb; //Reference to rigidbody of player
     private int pickupCount; //Number of pickups in game
     private Timer timer; //Reference to timer script
@@ -21,8 +25,11 @@ public class PlayerController : MonoBehaviour
     public TMP_Text winTimeText; //Text for win timer
 
 
+
     void Start()
     {
+        baseSpeed = speed;
+
         rb = GetComponent<Rigidbody>();
         //Get the number of pickups in our scene
         pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length;
@@ -69,13 +76,19 @@ public class PlayerController : MonoBehaviour
             //Run the check pickups function
             CheckPickups();
         }
+
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            other.GetComponent<Powerup>().UsePowerup();
+            other.gameObject.transform.position = Vector3.down * 1000;
+        }
     }
 
     void CheckPickups()
     {
         //Display the amount of pickups left in our scene
         scoreText.text = "pickup Left: " + pickupCount;
-        if (pickupCount == 0)
+        if (pickupCount <= 0)
         {
             WinGame();
         }
