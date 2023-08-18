@@ -5,18 +5,35 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
+    public float rotationSpeed = 5.0f;
+
     private Vector3 offset;
 
-
-    void Start()
+    private void Start()
     {
-        //Set the offset of the camera based in the player
         offset = transform.position - player.transform.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        //Get the cameras transfrom position to be that of the players transform position
-        transform.position = player.transform.position + offset;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(horizontalInput, verticalInput) * Mathf.Rad2Deg + player.transform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0, targetAngle, 0);
+
+            Vector3 rotatedOffset = rotation * offset;
+            Vector3 desiredPosition = player.transform.position + rotatedOffset;
+
+            transform.position = desiredPosition;
+            transform.LookAt(player.transform.position);
+        }
+        else
+        {
+            transform.position = player.transform.position + offset;
+            transform.LookAt(player.transform.position + player.transform.forward);
+        }
     }
 }
