@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text timerText; //Text for timer
     public TMP_Text winTimeText; //Text for win timer
 
+    bool grounded = true;
+
 
 
     void Start()
@@ -54,10 +56,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement * speed);
+
+        if (grounded)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            rb.AddForce(movement * speed);
+        }
     }
 
     private void Update()
@@ -82,6 +88,20 @@ public class PlayerController : MonoBehaviour
             other.GetComponent<Powerup>().UsePowerup();
             other.gameObject.transform.position = Vector3.down * 1000;
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.collider.CompareTag("Ground"))
+            grounded = true;
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            grounded = false;
+
     }
 
     void CheckPickups()
