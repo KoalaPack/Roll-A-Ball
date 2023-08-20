@@ -60,9 +60,9 @@ public class SceneController : MonoBehaviour
 
 
     //Loads Normal Game Scene
-    public void ToNormalGame()
+    public void ToBowlingMode()
     {
-        SceneManager.LoadScene("NormalGame");
+        SceneManager.LoadScene("BowlingGame");
     }
 
     //Loads Tron Game Scene

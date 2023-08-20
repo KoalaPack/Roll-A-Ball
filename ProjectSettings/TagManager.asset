@@ -7,6 +7,7 @@ TagManager:
   - Pick Up
   - Powerup
   - Ground
+  - BowlingPin
   layers:
   - Default
   - TransparentFX

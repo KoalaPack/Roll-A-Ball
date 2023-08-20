@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         //Get the number of pickups in our scene
-        pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length;
+        pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length 
+                    + GameObject.FindGameObjectsWithTag("BowlingPin").Length;
         //Run the check pickups function
         CheckPickups();
         //Get the timer object and start the timer
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         inGamePanel.SetActive(true);
         //Turn off our win panel
         winPanel.SetActive(false);
+
+        
 
     }
 
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //timerText.text = "Time: " + timer.GetTime().ToString("F2");
+        timerText.text = "Time: " + timer.GetTime().ToString("F2");
     }
 
 
@@ -102,6 +105,12 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
             grounded = false;
 
+    }
+
+    public void PinFall()
+    {
+        pickupCount -= 1;
+        CheckPickups();
     }
 
     void CheckPickups()
