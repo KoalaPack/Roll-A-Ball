@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     bool grounded = true;
 
+    MovingObjects playerFreeze;
+
 
 
     void Start()
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         //Turn off our win panel
         winPanel.SetActive(false);
 
-        
+        playerFreeze = FindObjectOfType<MovingObjects>();
 
     }
 
@@ -62,10 +64,13 @@ public class PlayerController : MonoBehaviour
 
         if (grounded)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-            rb.AddForce(movement * speed);
+            if (playerFreeze == true)
+            {
+                float moveHorizontal = Input.GetAxis("Horizontal");
+                float moveVertical = Input.GetAxis("Vertical");
+                Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+                rb.AddForce(movement * speed);
+            }
         }
     }
 
